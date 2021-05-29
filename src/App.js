@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import PlanReact from './components/PlanReact';
+import PlanRedux from './components/PlanRedux';
+import SubTemaViejo from './components/subTemaViejo';
+import Header from './components/Header';
+import {RUTAS} from './helpers/constants'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+         <div className="margen">
+            Hola Mundo!
+         </div>
+      <Header/>
+      <Route  path={RUTAS.planReact} component={PlanReact} />
+      <Route exact  path={`${RUTAS.planReact}/:subtema`} component={SubTemaViejo} />
+
+      
+      <Route exact path={RUTAS.planRedux} component={PlanRedux} />
+      {/* RETO Generar los Subtemas de PLanRedux */}
+    </BrowserRouter>
   );
 }
 
